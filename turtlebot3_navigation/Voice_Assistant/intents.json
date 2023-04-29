@@ -1,0 +1,26 @@
+{
+    "intents": [
+        {
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "What's up?"
+            ],
+            "responses": [
+                "Hey Sir",
+                "What can I do for you"
+            ]
+        },
+        {
+            "tag": "name",
+            "patterns": [
+                "what is your name?",
+                "what should i call you?"
+            ],
+            "responses": [
+                "my name is MDX"
+            ]
+        }
+    ]
+}
