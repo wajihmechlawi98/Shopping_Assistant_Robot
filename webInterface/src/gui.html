@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<!-- <!HEAD START> -->
+
+<head>
+    <title>MDX Market</title>
+
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device, initial-scale=1" />  -->
+
+    <link rel="stylesheet" href="css/style1.css" />
+    <link href="https://fonts.cdnfonts.com/css/arial-rounded-mt-bold" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo_img" src="css/img/logoWhite.png" alt="Logo" />
+        <div class="header">
+            <h1 class="logo_text">WELCOME TO MDX MARKET</h1>
+        </div>
+        <div class="clock">
+
+            <div class="center-nut">
+            </div>
+            <div class="center-nut2">
+            </div>
+
+            <div class="indicators">
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="sec-hand">
+                <div class="sec">
+                </div>
+            </div>
+            <div class="min-hand">
+                <div class="min">
+                </div>
+            </div>
+            <div class="hr-hand">
+                <div class="hr">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="buttons">
+        <div class="button" id="detergent" onclick="goPosition(1)"></div>
+        <div class="button" id="fruits" onclick="goPosition(2)"></div>
+        <div class="button" id="Appliances" onclick="goPosition(3)"></div>
+    </div>
+
+    <!-- Clock Java Script -->
+
+    <script>
+        const sec = document.querySelector(".sec");
+        const min = document.querySelector(".min");
+        const hr = document.querySelector(".hr");
+        setInterval(function() {
+            let time = new Date();
+            let secs = time.getSeconds() * 6;
+            let mins = time.getMinutes() * 6;
+            let hrs = time.getHours() * 30;
+            sec.style.transform = `rotateZ(${secs}deg)`;
+            min.style.transform = `rotateZ(${mins}deg)`;
+            hr.style.transform = `rotateZ(${hrs + (mins / 12)}deg)`;
+        });
+    </script>
+
+    <script>
+        function goPosition(positionNumber) {
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Determine the endpoint based on the positionNumber parameter
+            var endpoint = "/position" + positionNumber;
+
+            // Open a POST request to the server with the determined endpoint
+            xhr.open("POST", endpoint, true);
+
+            // Set the Content-Type header
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            // Send the request with a custom data payload
+            xhr.send(JSON.stringify({
+                value: true
+            }));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css">
+     -->
+     <style>
+        button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 20px;
+          }
+          
+          /* Ripple effect container */
+          .ripple-container {
+            position: relative;
+            overflow: hidden;
+          }
+          
+          /* Ripple effect circle */
+          .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            animation: ripple 0.5s linear;
+          }
+          
+          /* Animation for ripple effect */
+          @keyframes ripple {
+            to {
+              transform: scale(4);
+              opacity: 0;
+            }
+          }
+     </style>
+</head>
+<script>
+    document.addEventListener('click', function(event) {
+        const rippleBtns = document.querySelectorAll('.ripple-btn');
+        rippleBtns.forEach(function(btn) {
+          const rippleContainer = document.createElement('span');
+          rippleContainer.className = 'ripple-container';
+          const rippleEffect = document.createElement('span');
+          rippleEffect.className = 'ripple-effect';
+          rippleContainer.appendChild(rippleEffect);
+          btn.appendChild(rippleContainer);
+      
+          const btnRect = btn.getBoundingClientRect();
+          const x = event.clientX - btnRect.left;
+          const y = event.clientY - btnRect.top;
+          rippleEffect.style.left = x + 'px';
+          rippleEffect.style.top = y + 'px';
+      
+          setTimeout(function() {
+            rippleContainer.remove();
+          }, 500);
+        });
+      });
+      
+</script>
+<body>
+    <button class="ripple-btn">Press Me</button>
+</body>
+
+</html>
